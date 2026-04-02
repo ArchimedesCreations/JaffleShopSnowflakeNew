@@ -1,9 +1,7 @@
 name: dbt Cloud Deploy Prod
 
 on:
-  push:
-    branches:
-      - main
+  workflow_dispatch:
 
 jobs:
   run_snowflake:
