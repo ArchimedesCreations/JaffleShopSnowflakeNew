@@ -10,6 +10,11 @@ dbt-cloud:
 
 profile: default # Put your profile here
 
+flags:
+    warn_error_options:
+      silence:
+        - "Deprecations"
+
 model-paths: ["models"]
 analysis-paths: ["analyses"]
 test-paths: ["data-tests"]
