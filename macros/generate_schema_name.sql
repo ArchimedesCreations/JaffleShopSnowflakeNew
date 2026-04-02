@@ -6,7 +6,7 @@
     {% if node.resource_type == 'seed' %}
         {{ custom_schema_name | trim }}
 
-    {%- elif env_var('DBT_CLOUD_ENVIRONMENT_TYPE', 'CI') == 'dev' -%}
+    {%- elif  target.name == 'dev' or env_var('DBT_CLOUD_ENVIRONMENT_TYPE', 'CI') == 'dev' -%}
 
         {{ default_schema }}
 

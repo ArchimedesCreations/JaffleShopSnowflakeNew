@@ -1,19 +1,21 @@
 
 {% macro generate_alias_name(custom_alias_name=none, node=none) -%}
 
-    {%- if env_var('DBT_CLOUD_ENVIRONMENT_TYPE', 'CI') == 'dev' and not(node.resource_type == 'seed') -%}
+    {%- if (target.name == 'dev' or env_var('DBT_CLOUD_ENVIRONMENT_TYPE', 'CI') == 'dev') and not(node.resource_type == 'seed') -%}
+
+        {%- set schema_prefix = node.config.schema ~ '_' if node.config.schema else '' -%}
 
         {%- if custom_alias_name -%}
 
-            {{ node.schema }}__{{ custom_alias_name | trim }}
+            {{ schema_prefix }}{{ custom_alias_name | trim }}
 
         {%- elif node.version -%}
 
-            {{ node.schema }}__{{ node.name ~ "_v" ~ (node.version | replace(".", "_")) }}
+            {{ schema_prefix }}{{ node.name ~ "_v" ~ (node.version | replace(".", "_")) }}
 
         {%- else -%}
 
-            {{ node.schema }}__{{ node.name }}
+            {{ schema_prefix }}{{ node.name }}
 
         {%- endif -%}
     
