@@ -8,7 +8,7 @@ dbt-cloud:
   project-id: 394586 # Put your project id here
   account-host: "cloud.getdbt.com"
 
-profile: default # Put your profile here
+profile: jaffle_shop
 
 flags:
     warn_error_options:
@@ -31,7 +31,7 @@ vars:
   "dbt_date:time_zone": "America/Los_Angeles"
 
 seeds:
-  +schema: "{{ env_var('DBT_SCHEMA_SEED')}}"
+  +schema: "RAW"
 
 models:
   jaffle_shop:
