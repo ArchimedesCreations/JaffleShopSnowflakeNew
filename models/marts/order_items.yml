@@ -66,18 +66,18 @@ semantic_models:
       - name: is_drink_item
         type: categorical
     measures:
-      - name: revenue
+      - name: revenue_amount
         description: The revenue generated for each order item. Revenue is calculated as a sum of revenue associated with each product in an order.
         agg: sum
         expr: product_price
       - name: food_revenue
         description: The revenue generated for each order item. Revenue is calculated as a sum of revenue associated with each product in an order.
         agg: sum
-        expr: case when is_food_item is true then product_price else 0 end
+        expr: case when is_food_item = true then product_price else 0 end
       - name: drink_revenue
         description: The revenue generated for each order item. Revenue is calculated as a sum of revenue associated with each product in an order.
         agg: sum
-        expr: case when is_drink_item is true then product_price else 0 end
+        expr: case when is_drink_item = true then product_price else 0 end
       - name: median_revenue
         description: The median revenue generated for each order item.
         agg: median
@@ -90,7 +90,7 @@ metrics:
     type: simple
     label: Revenue
     type_params:
-      measure: revenue
+      measure: revenue_amount
   - name: order_cost
     description: Sum of cost for each order item.
     label: Order Cost
@@ -162,7 +162,7 @@ metrics:
     label: Cumulative Revenue (All Time)
     type: cumulative
     type_params:
-      measure: revenue
+      measure: revenue_amount
 
 saved_queries:
   - name: revenue_metrics
