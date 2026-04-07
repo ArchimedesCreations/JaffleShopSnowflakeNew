@@ -3,7 +3,7 @@ version: 2
 sources:
   - name: ecom
     description: E-commerce data for the Jaffle Shop
-    schema: "{{ env_var('DBT_SCHEMA_SEED') }}"
+    schema: "RAW"
     freshness:
       warn_after:
         count: 24
