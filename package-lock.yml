@@ -2,10 +2,14 @@ packages:
 - package: dbt-labs/audit_helper
   name: audit_helper
   version: 0.14.0
+- private: dbt-labs/dbt-cost-optimization
+  name: dbt_cost_optimization
+  revision: eec56ca2433465206f2f12ccac53739d063aac30
+  provider: github
 - package: godatadriven/dbt_date
   name: dbt_date
   version: 0.19.0
 - package: dbt-labs/dbt_utils
   name: dbt_utils
   version: 1.4.1
-sha1_hash: 039341ad9b6fda076f83620ed2d05afc32d6a138
+sha1_hash: 57473b594b1cce848d1aa0c7810e3b297d3e04e5
